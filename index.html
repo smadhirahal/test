@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samadhi Rahal - Artist & Editor</title>
+    
+    <!-- Meta Preview Tags -->
+    <meta name="description" content="Samadhi Rahal - Professional Artist & Editor from Sri Lanka. Connect with me on social media and explore my creative work.">
+    <meta name="keywords" content="Samadhi Rahal, Artist, Editor, Sri Lanka, Creative, Digital Art">
+    <meta name="author" content="Samadhi Rahal">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Samadhi Rahal - Artist & Editor">
+    <meta property="og:description" content="Professional Artist & Editor from Sri Lanka. Connect with me on social media and explore my creative work.">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://samadhirahal.com">
+    <meta property="og:site_name" content="Samadhi Rahal Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Samadhi Rahal - Artist & Editor">
+    <meta name="twitter:description" content="Professional Artist & Editor from Sri Lanka. Connect with me on social media and explore my creative work.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+            height: 100vh;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Image with cursor-follow parallax */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 110%;
+            height: 110%;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: translate3d(-5%, -5%, 0) scale(1.05);
+            transition: transform 0.045s linear;
+            z-index: -3;
+            will-change: transform;
+            filter: brightness(0.85);
+        }
+
+        /* Mouse network canvas (background effect) */
+        #bgMouseCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: none;
+            display: block;
+        }
+
+        /* (Removed old video controls) */
+
+        /* Reduced Liquid Glass Background Animation */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(20px); /* Reduced from 80px to 20px */
+            animation: liquidFloat 15s ease-in-out infinite;
+            opacity: 0.2; /* Slightly reduced opacity */
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #a8e6cf, #dcedc1, #c7ecee);
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(45deg, #ffd93d, #ff6b6b, #ff8a80);
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes liquidFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+                border-radius: 60% 40% 30% 70%;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(20px) scale(1.1) rotate(90deg);
+                border-radius: 30% 60% 70% 40%;
+            }
+            50% { 
+                transform: translateY(-10px) translateX(-20px) scale(0.9) rotate(180deg);
+                border-radius: 50% 60% 30% 60%;
+            }
+            75% { 
+                transform: translateY(20px) translateX(10px) scale(1.05) rotate(270deg);
+                border-radius: 40% 40% 60% 50%;
+            }
+        }
+
+        /* (Removed snow effect) */
+
+        /* Main Container - Centered and fits screen */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Wide Glass morphism container */
+        .glass-container {
+            position: relative;
+            z-index: 2;
+            backdrop-filter: none;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.2) 0%, /* Slightly less transparent */
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.04) 100%);
+            border-radius: 30px;
+            padding: 26px 40px; /* Reduced a touch more */
+            max-width: 550px; /* Reduced a touch more */
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Liquid glass layers for big menu box */
+        .glass-container .lg-bend {
+            backdrop-filter: blur(1.5px);
+            border-radius: 30px;
+            filter: url(#glass-blur);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .glass-container .lg-face {
+            border-radius: 30px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .glass-container .lg-edge {
+            border-radius: 30px;
+            box-shadow: inset 3px 3px 3px 0 rgba(255, 255, 255, 0.45),
+                inset -3px -3px 3px 0 rgba(255, 255, 255, 0.45);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .glass-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Glass reflection effects */
+        .glass-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.15) 0%, /* Reduced opacity */
+                rgba(255, 255, 255, 0.04) 50%,
+                transparent 100%);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .glass-container::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.5) 20%,
+                rgba(255, 255, 255, 0.7) 50%,
+                rgba(255, 255, 255, 0.5) 80%,
+                transparent 100%);
+            border-radius: 30px;
+        }
+
+        /* Profile elements */
+        .profile-image {
+            width: 104px;
+            height: 104px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.25), 
+                rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(10px); /* Reduced blur */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 2px 10px rgba(255, 255, 255, 0.15);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Discord Status Badge */
+        .discord-status {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .discord-status.online {
+            background: #43b581;
+            color: #43b581;
+        }
+
+        .discord-status.idle {
+            background: #faa61a;
+            color: white;
+        }
+
+        .discord-status.dnd {
+            background: #f04747;
+            color: white;
+        }
+
+        .discord-status.offline {
+            background: #747f8d;
+            color: white;
+        }
+
+        .name {
+            font-family: 'Inter', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0, #ffffff, #e8e8e8);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameShine 4s ease-in-out infinite;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes nameShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.08em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        .location {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .status {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Social Buttons - Line Layout */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 26px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .liquid-btn {
+            font-family: 'Inter', sans-serif;
+            width: 56px;
+            height: 56px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px) saturate(1.2); /* Reduced blur */
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.12), 
+                rgba(255, 255, 255, 0.04));
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .liquid-btn i {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            z-index: 2;
+            position: relative;
+        }
+
+        .liquid-btn:hover i {
+            transform: scale(1.2);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Glass shimmer effect */
+        .liquid-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .liquid-btn::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            height: 30%;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.25) 0%, 
+                rgba(255, 255, 255, 0.08) 50%,
+                transparent 100%);
+            border-radius: 18px 18px 10px 10px;
+            pointer-events: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .liquid-btn:hover::before {
+            left: 100%;
+        }
+
+        .liquid-btn:hover::after {
+            opacity: 1;
+        }
+
+        .liquid-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.08));
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.12), 
+                rgba(255, 255, 255, 0.04));
+            padding: 15px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 500;
+            backdrop-filter: blur(10px); /* Reduced blur */
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.08));
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Notification */
+        .notification {
+            font-family: 'Inter', sans-serif;
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(145deg, 
+                rgba(76, 175, 80, 0.9), 
+                rgba(56, 142, 60, 0.9));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .glass-container {
+                max-width: 900px; /* 10% smaller: 1000px → 900px */
+                padding: 31.5px 54px; /* 10% smaller: 35px 60px → 31.5px 54px */
+            }
+            
+            .social-grid {
+                gap: 18px; /* 10% smaller: 20px → 18px */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 15px;
+            }
+            
+            .glass-container {
+                padding: 27px 36px; /* 10% smaller: 30px 40px → 27px 36px */
+                max-width: 100%;
+            }
+            
+            .social-grid {
+                gap: 16.2px; /* 10% smaller: 18px → 16.2px */
+            }
+            
+            .liquid-btn {
+                width: 45px; /* 10% smaller: 50px → 45px */
+                height: 45px;
+                font-size: 14.4px; /* 10% smaller: 16px → 14.4px */
+            }
+            
+            .name {
+                font-size: 2.1em;
+            }
+            
+            .contact-section {
+                flex-direction: column;
+                gap: 13.5px; /* 10% smaller: 15px → 13.5px */
+            }
+            
+            .contact-item {
+                font-size: 11.7px; /* 10% smaller: 13px → 11.7px */
+                padding: 10.8px 14.4px; /* 10% smaller: 12px 16px → 10.8px 14.4px */
+            }
+
+            /* (Removed video controls responsive rules) */
+
+            /* Ensure mini menu is comfortable on tablets/phones */
+            .liquid-glass {
+                --glass-size-w: 14rem;
+                --glass-size-h: 14rem;
+                --glass-padding: 1.4rem;
+                --menu-gap: 0.9rem;
+                --icon-size: 3.25rem;
+                --icon-padding: 0.65rem;
+            }
+            .liquid-glass__menus { grid-template-columns: repeat(2, 1fr); }
+            .liquid-glass.is-expanded {
+                --glass-size-w: 24rem;
+                --glass-size-h: 24rem;
+                --glass-padding: 1.3rem;
+            }
+            .liquid-glass.is-expanded .liquid-glass__link {
+                --icon-size: 4.5rem;
+                --icon-padding: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-container {
+                padding: 22.5px 18px; /* 10% smaller: 25px 20px → 22.5px 18px */
+            }
+            
+            .social-grid {
+                gap: 13.5px; /* 10% smaller: 15px → 13.5px */
+            }
+            
+            .liquid-btn {
+                width: 40.5px; /* 10% smaller: 45px → 40.5px */
+                height: 40.5px;
+                font-size: 12.6px; /* 10% smaller: 14px → 12.6px */
+            }
+            
+            .name {
+                font-size: 1.8em;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .discord-status {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+
+            /* Phone-specific mini menu sizing */
+            .liquid-glass {
+                --glass-size-w: 12rem;
+                --glass-size-h: 12rem;
+                --menu-gap: 0.8rem;
+                --icon-size: 3rem;
+            }
+            .liquid-glass.is-expanded {
+                --glass-size-w: 20rem;
+                --glass-size-h: 20rem;
+            }
+            .liquid-glass.is-expanded .liquid-glass__link { --icon-size: 4rem; }
+        }
+        /* Liquid Glass Menu (exact from liquid glass3.2.html) */
+        .liquid-glass {
+            --glass-size-w: 13rem;
+            --glass-size-h: 13rem;
+            --glass-padding: 1.3rem;
+            --border-radius: 2rem;
+            --transition: 0.4s cubic-bezier(0.5, 1.5, 0.5, 1);
+            --menu-gap: 0.8rem;
+            --icon-size: 3rem;
+            --icon-border-radius: 0.85rem;
+            --icon-padding: 0.6rem;
+            border-radius: var(--border-radius);
+            cursor: grab;
+            height: var(--glass-size-h);
+            padding: var(--glass-padding);
+            position: relative;
+            transition: width var(--transition), height var(--transition), padding var(--transition);
+            width: var(--glass-size-w);
+            z-index: 3;
+            margin: 0 auto 28px;
+            /* Mini menu: basic blur, no internal liquid layers */
+            backdrop-filter: blur(2px) saturate(1.1);
+            background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
+        }
+
+        .liquid-glass.is-expanded {
+            --glass-size-w: 28rem;
+            --glass-size-h: 28rem;
+            --glass-padding: 1.4rem;
+        }
+
+        .liquid-glass--bend { display: none; }
+
+        .liquid-glass--face { display: none; }
+
+        .liquid-glass--edge { display: none; }
+
+        .liquid-glass__menus {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--menu-gap);
+            place-items: center;
+            place-content: center;
+            height: 100%;
+        }
+
+        .liquid-glass.is-expanded .liquid-glass__menus {
+            --menu-gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: center;
+        }
+
+        .liquid-glass__link {
+            border-radius: var(--icon-border-radius);
+            box-shadow: inset 1px 1px 1px 0 rgba(255, 255, 255, 0.45), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.45);
+            display: flex;
+            height: var(--icon-size);
+            padding: var(--icon-padding);
+            pointer-events: none;
+            transition: width var(--transition), height var(--transition), border-radius var(--transition);
+            width: var(--icon-size);
+            z-index: 3;
+            text-decoration: none;
+        }
+
+        .liquid-glass.is-expanded .liquid-glass__link {
+            --icon-size: 5rem;
+            --icon-border-radius: 1.2rem;
+            --icon-padding: 0.9rem;
+            cursor: default;
+            pointer-events: auto;
+            box-shadow: inset 1px 2px 2px 0 rgba(255, 255, 255, 0.45), inset -1px -2px 2px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .liquid-glass__icon {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .liquid-glass__link:hover .liquid-glass__icon {
+            transform: scale(1.1);
+        }
+
+        .link-linkedin { background: linear-gradient(90deg, #1a76ad 0%, #288ec9 100%); }
+        .link-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .link-youtube { background: linear-gradient(135deg, #ff0000 0%, #cc0000 50%, #ff453a 100%); }
+        .link-tiktok { background: linear-gradient(45deg, #ff0050 0%, #00f2ea 50%, #000 100%); }
+        .link-facebook { background: linear-gradient(90deg, #1877f2 0%, #42a5f5 100%); }
+        .link-discord { background: linear-gradient(90deg, #5865f2 0%, #7289da 100%); }
+        .link-reddit { background: linear-gradient(90deg, #ff4500 0%, #ff8c00 100%); }
+        .link-threads { background: linear-gradient(90deg, #000 0%, #282828 100%); }
+    </style>
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="bg-image" id="bgImage" style="background-image: url('BG8.2.png');"></div>
+
+    <canvas id="bgMouseCanvas"></canvas>
+
+    <!-- Liquid Background -->
+    <div class="liquid-bg">
+        <div class="liquid-blob blob1"></div>
+        <div class="liquid-blob blob2"></div>
+        <div class="liquid-blob blob3"></div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    
+    <div class="main-container">
+        <div class="glass-container">
+            <div class="lg-bend"></div>
+            <div class="lg-face"></div>
+            <div class="lg-edge"></div>
+            <div class="glass-content">
+            <div class="profile-image" id="profileImage">
+                <div class="loading">SR</div>
+                <div class="discord-status offline" id="discordStatusBadge">
+                    <i class="fas fa-circle"></i>
+                </div>
+            </div>
+            <h1 class="name" id="displayName">Samadhi Rahal</h1>
+            <p class="title">Artist & Editor</p>
+            <div class="location">Sri Lanka</div>
+            <div class="status" id="discordStatus">Loading Discord status...</div>
+            
+            <div>
+                <div class="liquid-glass">
+                    <div class="liquid-glass--bend"></div>
+                    <div class="liquid-glass--face"></div>
+                    <div class="liquid-glass--edge"></div>
+                    <div class="liquid-glass__menus">
+                        <a class="liquid-glass__link link-linkedin" href="https://www.linkedin.com/in/samadhi-rahal-samarasinghe-a6b095313/" target="_blank" title="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 93.06">
+                                <path class="liquid-glass__icon" fill="#fff" d="M11.185.08C5.004.08.001 5.092 0 11.259c0 6.173 5.003 11.184 11.186 11.184 6.166 0 11.176-5.011 11.176-11.184C22.362 5.091 17.351.08 11.185.08zM1.538 30.926h19.287V92.98H1.538zM69.925 29.383c-9.382 0-15.673 5.144-18.248 10.022h-.258v-8.479H32.92v62.053h19.27V62.281c0-8.093 1.541-15.932 11.575-15.932 9.89 0 10.022 9.256 10.022 16.451v30.178H93.06V58.942c0-16.707-3.605-29.559-23.135-29.559z" />
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-instagram" href="https://www.instagram.com/samadhirahal/" target="_blank" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-youtube" href="https://www.youtube.com/@SamadhiRahal" target="_blank" title="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-tiktok" href="https://www.tiktok.com/@samadhi_rahal" target="_blank" title="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-facebook" href="https://www.facebook.com/SamadiRahal/" target="_blank" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-discord" href="https://discord.com/" target="_blank" title="Discord">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-reddit" href="https://www.reddit.com/u/Rahal_Art" target="_blank" title="Reddit">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                            </svg>
+                        </a>
+                        <a class="liquid-glass__link link-threads" href="https://www.threads.net/@samadhirahal" target="_blank" title="Threads">
+                            <img class="liquid-glass__icon" src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads" />
+                        </a>
+                        <a class="liquid-glass__link link-youtube" href="https://www.youtube.com/@RaalaGaming" target="_blank" title="YouTube Gaming">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="none">
+                                <path class="liquid-glass__icon" fill="#fff" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-item" onclick="copyText('rahalbro2007@gmail.com')" title="Click to copy email">
+                    <i class="fas fa-envelope"></i> rahalbro2007@gmail.com
+                </div>
+                <div class="contact-item" onclick="copyText('+94 702 241 785')" title="Click to copy phone">
+                    <i class="fas fa-phone"></i> +94 702 241 785
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG filter for liquid glass blur effect -->
+    <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+        <filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.004 0.01" numOctaves="1" result="turbulence" />
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="280" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
+    <!-- GSAP for draggable/elastic behavior -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+    <script>
+        const DISCORD_USER_ID = '993191213022847086';
+        const LANYARD_API = `https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`;
+
+        // Background parallax - mouse cursor follow
+        const bgImage = document.getElementById('bgImage');
+        // Mouse network canvas effect
+        const mouseCanvas = document.getElementById('bgMouseCanvas');
+        const mouseCtx = mouseCanvas.getContext('2d');
+        let mousePoints = [];
+        let mouseTarget = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        let viewportW = window.innerWidth;
+        let viewportH = window.innerHeight;
+        function onMouseMove(e) {
+            const x = (e.clientX / viewportW - 0.5) * 2; // -1 to 1
+            const y = (e.clientY / viewportH - 0.5) * 2; // -1 to 1
+            const translateX = -5 - x * 2.5; // base -5% plus movement
+            const translateY = -5 - y * 2.5;
+            bgImage.style.transform = `translate3d(${translateX}%, ${translateY}%, 0) scale(1.05)`;
+            mouseTarget.x = e.clientX;
+            mouseTarget.y = e.clientY;
+        }
+        window.addEventListener('mousemove', onMouseMove, { passive: true });
+        window.addEventListener('resize', () => {
+            viewportW = window.innerWidth;
+            viewportH = window.innerHeight;
+            sizeMouseCanvas();
+        });
+
+        // (Removed snow effect)
+
+        function updateDiscordStatus(status) {
+            const statusBadge = document.getElementById('discordStatusBadge');
+            const statusIcons = {
+                online: 'fas fa-circle',
+                idle: 'fas fa-moon',
+                dnd: 'fas fa-minus-circle',
+                offline: 'fas fa-circle'
+            };
+
+            statusBadge.className = `discord-status ${status}`;
+            statusBadge.innerHTML = `<i class="${statusIcons[status] || statusIcons.offline}"></i>`;
+        }
+
+        async function fetchDiscordData() {
+            try {
+                const response = await fetch(LANYARD_API);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const user = data.data;
+                    
+                    // Update profile image
+                    const profileImage = document.getElementById('profileImage');
+                    if (user.discord_user.avatar) {
+                        const avatarUrl = `https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user.avatar}.png?size=256`;
+                        const statusBadgeHtml = document.getElementById('discordStatusBadge').outerHTML;
+                        profileImage.innerHTML = `<img src="${avatarUrl}" alt="Profile Avatar" class="profile-avatar">${statusBadgeHtml}`;
+                    }
+                    
+                    // Update display name
+                    const displayName = document.getElementById('displayName');
+                    if (user.discord_user.display_name) {
+                        displayName.textContent = user.discord_user.display_name;
+                    }
+                    
+                    // Update status badge
+                    updateDiscordStatus(user.discord_status);
+                    
+                    // Update status text
+                    const statusElement = document.getElementById('discordStatus');
+                    let statusText = '';
+                    
+                    switch (user.discord_status) {
+                        case 'online':
+                            statusText = 'Online';
+                            break;
+                        case 'idle':
+                            statusText = 'Away';
+                            break;
+                        case 'dnd':
+                            statusText = 'Do Not Disturb';
+                            break;
+                        case 'offline':
+                            statusText = 'Offline';
+                            break;
+                        default:
+                            statusText = 'Unknown';
+                    }
+                    
+                    // Add activity info if available
+                    if (user.activities && user.activities.length > 0) {
+                        const activity = user.activities[0];
+                        if (activity.type === 0) { // Playing
+                            statusText += ` | Playing ${activity.name}`;
+                        } else if (activity.type === 2) { // Listening to Spotify
+                            statusText += ` | Listening to ${activity.details} by ${activity.state}`;
+                        } else if (activity.type === 3) { // Watching
+                            statusText += ` | Watching ${activity.name}`;
+                        } else if (activity.type === 4) { // Custom status
+                            if (activity.state) {
+                                statusText += ` | ${activity.state}`;
+                            }
+                        }
+                    }
+                    
+                    statusElement.textContent = statusText;
+                } else {
+                    document.getElementById('discordStatus').textContent = 'Discord status unavailable';
+                    updateDiscordStatus('offline');
+                }
+            } catch (error) {
+                console.error('Error fetching Discord data:', error);
+                document.getElementById('discordStatus').textContent = 'Failed to load Discord status';
+                updateDiscordStatus('offline');
+            }
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(`Copied: ${text}`);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showNotification(`Copied: ${text}`);
+            });
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchDiscordData();
+            // Refresh Discord data every 30 seconds
+            setInterval(fetchDiscordData, 30000);
+
+            // Initialize Liquid Glass menu interactions
+            if (window.gsap && window.Draggable) {
+                gsap.registerPlugin(Draggable);
+                Draggable.create('.liquid-glass', {
+                    type: 'x, y',
+                    bounds: window,
+                    inertia: true,
+                    onRelease: function () {
+                        gsap.to(this.target, {
+                            x: 0,
+                            y: 0,
+                            duration: 1.5,
+                            ease: 'elastic.out(1,0.3)'
+                        });
+                    }
+                });
+            }
+
+            const liquidGlass = document.querySelector('.liquid-glass');
+            if (liquidGlass) {
+                liquidGlass.addEventListener('click', (e) => {
+                    if (e.target.closest('.liquid-glass__icon')) return;
+                    liquidGlass.classList.toggle('is-expanded');
+                });
+            }
+            // Init mouse canvas network
+            sizeMouseCanvas();
+            initMousePoints();
+            animateMouseCanvas();
+        });
+
+        function sizeMouseCanvas() {
+            mouseCanvas.width = window.innerWidth;
+            mouseCanvas.height = window.innerHeight;
+        }
+
+        function initMousePoints() {
+            mousePoints = [];
+            const stepX = window.innerWidth / 20;
+            const stepY = window.innerHeight / 20;
+            for (let x = 0; x < window.innerWidth; x += stepX) {
+                for (let y = 0; y < window.innerHeight; y += stepY) {
+                    const px = x + Math.random() * stepX;
+                    const py = y + Math.random() * stepY;
+                    const point = { x: px, y: py, originX: px, originY: py, active: 0 };
+                    mousePoints.push(point);
+                }
+            }
+            // compute 5 closest for each point
+            mousePoints.forEach((p1) => {
+                const closest = [];
+                mousePoints.forEach((p2) => {
+                    if (p1 === p2) return;
+                    if (closest.length < 5) {
+                        closest.push(p2);
+                    } else {
+                        let maxIndex = 0;
+                        let maxDist = distanceSq(p1, closest[0]);
+                        for (let i = 1; i < closest.length; i++) {
+                            const d = distanceSq(p1, closest[i]);
+                            if (d > maxDist) { maxDist = d; maxIndex = i; }
+                        }
+                        const dToP2 = distanceSq(p1, p2);
+                        if (dToP2 < maxDist) {
+                            closest[maxIndex] = p2;
+                        }
+                    }
+                });
+                p1.closest = closest;
+                p1.radius = 2 + Math.random() * 2;
+            });
+        }
+
+        function animateMouseCanvas() {
+            mouseCtx.clearRect(0, 0, mouseCanvas.width, mouseCanvas.height);
+            mousePoints.forEach((p) => {
+                const d = Math.abs(distanceSq(mouseTarget, p));
+                if (d < 4000) { p.active = 0.3; }
+                else if (d < 20000) { p.active = 0.1; }
+                else if (d < 40000) { p.active = 0.02; }
+                else { p.active = 0; }
+                drawMouseLines(p);
+                drawMouseCircle(p);
+                // gentle wandering
+                p.x += (p.originX - p.x) * 0.005 + (Math.random() - 0.5) * 0.2;
+                p.y += (p.originY - p.y) * 0.005 + (Math.random() - 0.5) * 0.2;
+            });
+            requestAnimationFrame(animateMouseCanvas);
+        }
+
+        function drawMouseLines(p) {
+            if (!p.active) return;
+            mouseCtx.beginPath();
+            p.closest.forEach((c) => {
+                mouseCtx.moveTo(p.x, p.y);
+                mouseCtx.lineTo(c.x, c.y);
+            });
+            mouseCtx.strokeStyle = `rgba(156,217,249,${p.active})`;
+            mouseCtx.stroke();
+        }
+
+        function drawMouseCircle(p) {
+            if (!p.active) return;
+            mouseCtx.beginPath();
+            mouseCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            mouseCtx.fillStyle = `rgba(156,217,249,${Math.min(0.6, p.active*2)})`;
+            mouseCtx.fill();
+        }
+
+        function distanceSq(a, b) {
+            return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+        }
+    </script>
+</body>
+</html>
